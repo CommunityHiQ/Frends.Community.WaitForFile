@@ -1,5 +1,4 @@
 ﻿using System.IO;
-using System.Threading;
 
 namespace Frends.Community.WaitForFile
 {    /// <summary>
@@ -29,7 +28,7 @@ namespace Frends.Community.WaitForFile
             /// </summary>
             public bool ContinueIfExists { get; set; }
         }
-        
+
         /// <summary>
         /// Return object
         /// </summary>
@@ -49,11 +48,11 @@ namespace Frends.Community.WaitForFile
         /// Wait for file to appear
         /// </summary>
         /// <returns>Object {string FilePath }  </returns>
-        public static Output WaitForFileToAppear(Parameters parameters, CancellationToken cancellationToken)
+        public static Output WaitForFileToAppear(Parameters parameters)
         {
             if (parameters.ContinueIfExists && File.Exists(Path.Combine(parameters.FilePath, parameters.FileMask)))
             {
-                return new Output{ FileExists = true };
+                return new Output { FileExists = true };
             }
 
             var fileWatcher = new FileSystemWatcher
@@ -70,14 +69,9 @@ namespace Frends.Community.WaitForFile
             fileWatcher.Renamed += new RenamedEventHandler((s, e) => path = e.FullPath);
             fileWatcher.EnableRaisingEvents = true;
 
-            while (!cancellationToken.IsCancellationRequested)
-            {
-                fileWatcher.WaitForChanged(WatcherChangeTypes.All, parameters.TimeoutMS);
-                break;
-            }
-            cancellationToken.ThrowIfCancellationRequested();
+            fileWatcher.WaitForChanged(WatcherChangeTypes.All, parameters.TimeoutMS);
 
-            return new Output{FilePath = path};
+            return new Output { FilePath = path };
         }
     }
 }
