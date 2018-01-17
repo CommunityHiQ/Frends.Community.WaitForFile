@@ -1,51 +1,65 @@
 ﻿using System.IO;
+using Frends.Tasks.Attributes;
+using System.ComponentModel;
 
 namespace Frends.Community.WaitForFile
-{    /// <summary>
+{ 
+/// <summary>
+/// Parameters for file appearing
+/// </summary>
+public class Parameters
+{
+    /// <summary>
+    /// File path
+    /// </summary>
+    [DefaultValue(@"C:\")]
+    [DisplayName(@"File path")]
+    [DefaultDisplayType(DisplayType.Text)]
+    public string FilePath { get; set; }
+    /// <summary>
+    /// File mask
+    /// </summary>
+    [DefaultValue(@"*.*")]
+    [DisplayName(@"File mask")]
+    [DefaultDisplayType(DisplayType.Text)]
+    public string FileMask { get; set; }
+    /// <summary>
+    /// Time out in milliseconds
+    /// </summary>
+    [DefaultValue(@"3000")]
+    [DisplayName(@"Timeout (ms)")]
+    [DefaultDisplayType(DisplayType.Text)]
+    public int TimeoutMS { get; set; }
+    /// <summary>
+    /// Continut if file exists
+    /// </summary>
+    [DefaultValue(@"true")]
+    [DisplayName(@"Continue if exists")]
+    public bool ContinueIfExists { get; set; }
+}
+
+/// <summary>
+/// Return object
+/// </summary>
+public class Output
+{
+    /// <summary>
+    /// Result path
+    /// </summary>
+    public string FilePath { get; set; }
+    /// <summary>
+    /// File exists
+    /// </summary>
+    public bool FileExists { get; set; }
+}
+
+    /// <summary>
      /// SubmitForm
      /// </summary>
     public static class WaitFile
     {
         /// <summary>
-        /// Parameters for file appearing
-        /// </summary>
-        public class Parameters
-        {
-            /// <summary>
-            /// File path
-            /// </summary>
-            public string FilePath { get; set; }
-            /// <summary>
-            /// File mask
-            /// </summary>
-            public string FileMask { get; set; }
-            /// <summary>
-            /// Time out in milliseconds
-            /// </summary>
-            public int TimeoutMS { get; set; }
-            /// <summary>
-            /// Continut if file exists
-            /// </summary>
-            public bool ContinueIfExists { get; set; }
-        }
-
-        /// <summary>
-        /// Return object
-        /// </summary>
-        public class Output
-        {
-            /// <summary>
-            /// Result path
-            /// </summary>
-            public string FilePath { get; set; }
-            /// <summary>
-            /// File exists
-            /// </summary>
-            public bool FileExists { get; set; }
-        }
-
-        /// <summary>
-        /// Wait for file to appear
+        /// Wait for file to appear.
         /// </summary>
         /// <returns>Object {string FilePath }  </returns>
         public static Output WaitForFileToAppear(Parameters parameters)

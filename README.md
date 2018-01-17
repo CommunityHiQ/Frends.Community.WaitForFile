@@ -9,7 +9,7 @@
 
 
 # Frends.Community.WaitForFile
-FRENDS Task that posts web form.
+FRENDS Task that waits if file appears into specific folder.
 
 ## Contributing
 When contributing to this repository, please first discuss the change you wish to make via issue, email, or any other method with the owners of this repository before making a change.

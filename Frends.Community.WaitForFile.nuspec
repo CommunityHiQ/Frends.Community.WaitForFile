@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>Frends.Community.WaitForFile</id>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
     <title>Frends.Community.WaitForFile</title>
     <authors>HiQ Finland</authors>
     <owners />
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Frends.Community.WaitForFiler</description>
+    <description>Frends.Community.WaitForFile</description>
     <summary />
     <dependencies />
     <frameworkAssemblies>
@@ -17,5 +17,6 @@
   </metadata>
   <files>
     <file src="Frends.Community.WaitForFile\bin\Release\Frends.Community.WaitForFile.dll" target="lib\net452\Frends.Community.WaitForFile.dll" />
+    <file src="Frends.Community.WaitForFile\bin\Release\Frends.Community.WaitForFile.xml" target="lib\net452\Frends.Community.WaitForFile.xml" />
   </files>
 </package>

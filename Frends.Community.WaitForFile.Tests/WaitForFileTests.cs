@@ -28,9 +28,9 @@ namespace Frends.Community.WaitForFile.Tests
             if (File.Exists(Path.Combine(_dir, "test.txt")))
                 File.Delete(Path.Combine(_dir, "test.txt"));
 
-            var options = new WaitFile.Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 5000};
+            var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 5000};
 
-            var watchTask = Task.Run(() => WaitFile.WaitForFileToAppear(options, new CancellationToken()));
+            var watchTask = Task.Run(() => WaitFile.WaitForFileToAppear(options));
             Task.Delay(1000).Wait();
             File.WriteAllText(Path.Combine(_dir, "test.txt"), "test");
             watchTask.Wait();
@@ -45,9 +45,9 @@ namespace Frends.Community.WaitForFile.Tests
             if (File.Exists(Path.Combine(_dir, "test.txt")))
                 File.Delete(Path.Combine(_dir, "test.txt"));
 
-            var options = new WaitFile.Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 2000 };
+            var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 2000 };
     
-            var watchTask1 = Task.Run(() => WaitFile.WaitForFileToAppear(options, new CancellationToken()));
+            var watchTask1 = Task.Run(() => WaitFile.WaitForFileToAppear(options));
             Task.Delay(3000).Wait();
             File.WriteAllText(Path.Combine(_dir, "test.txt"), "test_line");
             watchTask1.Wait();
@@ -59,9 +59,9 @@ namespace Frends.Community.WaitForFile.Tests
         [Test]
         public void TestWaitForFileSkipExistingFile()
         {
-            var options = new WaitFile.Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test_file.txt", TimeoutMS = 2000 };
+            var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test_file.txt", TimeoutMS = 2000 };
 
-            var watchTask = Task.Run(() => WaitFile.WaitForFileToAppear(options, new CancellationToken()));
+            var watchTask = Task.Run(() => WaitFile.WaitForFileToAppear(options));
             watchTask.Wait();
             var result = watchTask.Result;
 
