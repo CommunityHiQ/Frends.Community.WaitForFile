@@ -1,6 +1,6 @@
 ﻿using System.IO;
-using Frends.Tasks.Attributes;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace Frends.Community.WaitForFile
 { 
@@ -14,21 +14,21 @@ public class Parameters
     /// </summary>
     [DefaultValue(@"C:\")]
     [DisplayName(@"File path")]
-    [DefaultDisplayType(DisplayType.Text)]
+    [DisplayFormat(DataFormatString = "Text")]
     public string FilePath { get; set; }
     /// <summary>
     /// File mask
     /// </summary>
     [DefaultValue(@"*.*")]
     [DisplayName(@"File mask")]
-    [DefaultDisplayType(DisplayType.Text)]
+    [DisplayFormat(DataFormatString = "Text")]
     public string FileMask { get; set; }
     /// <summary>
     /// Time out in milliseconds
     /// </summary>
     [DefaultValue(@"3000")]
     [DisplayName(@"Timeout (ms)")]
-    [DefaultDisplayType(DisplayType.Text)]
+    [DisplayFormat(DataFormatString = "Text")]
     public int TimeoutMS { get; set; }
     /// <summary>
     /// Continut if file exists
