@@ -31,10 +31,10 @@ public class Parameters
     [DisplayFormat(DataFormatString = "Text")]
     public int TimeoutMS { get; set; }
     /// <summary>
-    /// Continut if file exists
+    /// Continue if file allready exists. If false, file action is being waited even if file matching the file mask exist.
     /// </summary>
     [DefaultValue(@"true")]
-    [DisplayName(@"Continue if exists")]
+    [DisplayName(@"Continue if file allready exists")]
     public bool ContinueIfExists { get; set; }
 }
 
@@ -48,7 +48,7 @@ public class Output
     /// </summary>
     public string FilePath { get; set; }
     /// <summary>
-    /// File exists
+    /// File allready exists or not (it was created while task was waiting)
     /// </summary>
     public bool FileExists { get; set; }
 }
@@ -59,9 +59,9 @@ public class Output
     public static class WaitFile
     {
         /// <summary>
-        /// Wait for file to appear.
+        /// Wait for file to appear or to be modified. For a more detailed documentation see: https://github.com/CommunityHiQ/Frends.Community.WaitForFile
         /// </summary>
-        /// <returns>Object {string FilePath }  </returns>
+        /// <returns>Object {string FilePath, bool FileExists }  </returns>
         public static Output WaitForFileToAppear(Parameters parameters)
         {
             if (parameters.ContinueIfExists && File.Exists(Path.Combine(parameters.FilePath, parameters.FileMask)))
