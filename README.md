@@ -6,6 +6,7 @@
     - [Options](#options)
     - [Result](#result)
   - [License](#license)
+  - [Change Log](#change-log)
 
 
 # Frends.Community.WaitForFile
@@ -43,3 +44,10 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 ## License
 
 This project is licensed under the MIT License - see the LICENSE file for details
+
+# Change Log
+
+| Version | Changes |
+| ------- | ------- |
+| 1.0.0   | First version. |
+| 1.1.0   | TimeoutMS will be now showed as int in FRENDS UI. |
