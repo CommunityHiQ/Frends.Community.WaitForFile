@@ -24,14 +24,13 @@ public class Parameters
     [DisplayFormat(DataFormatString = "Text")]
     public string FileMask { get; set; }
     /// <summary>
-    /// Time out in milliseconds
+    /// Timeout in milliseconds
     /// </summary>
     [DefaultValue(@"3000")]
     [DisplayName(@"Timeout (ms)")]
-    [DisplayFormat(DataFormatString = "Text")]
     public int TimeoutMS { get; set; }
     /// <summary>
-    /// Continue if file allready exists. If false, file action is being waited even if file matching the file mask exist.
+    /// Continue if file already exists. If false, file action is being waited even if file matching the file mask exist.
     /// </summary>
     [DefaultValue(@"true")]
     [DisplayName(@"Continue if file allready exists")]
