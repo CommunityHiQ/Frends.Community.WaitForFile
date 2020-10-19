@@ -1,2 +1,2 @@
-Lorem lipsum
+﻿Lorem lipsum
 Sumpil merol

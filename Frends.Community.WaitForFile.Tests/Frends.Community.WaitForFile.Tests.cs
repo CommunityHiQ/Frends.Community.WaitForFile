@@ -1,21 +1,22 @@
-﻿using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
 using NUnit.Framework;
+using System;
+using System.IO;
+using System.Threading.Tasks;
 
 namespace Frends.Community.WaitForFile.Tests
 {
+
     [TestFixture]
     public class WaitForFileToAppearTests
     {
-        private readonly string _dir = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\TestData");
+        private readonly string _dir = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\TestData");
 
         [SetUp]
         public void Setup()
         {
         }
 
-       [TearDown]
+        [TearDown]
         public void Down()
         {
             if (File.Exists(Path.Combine(_dir, "test.txt")))
@@ -28,7 +29,7 @@ namespace Frends.Community.WaitForFile.Tests
             if (File.Exists(Path.Combine(_dir, "test.txt")))
                 File.Delete(Path.Combine(_dir, "test.txt"));
 
-            var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 5000};
+            var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 5000 };
 
             var watchTask = Task.Run(() => WaitFile.WaitForFileToAppear(options));
             Task.Delay(1000).Wait();
@@ -46,7 +47,7 @@ namespace Frends.Community.WaitForFile.Tests
                 File.Delete(Path.Combine(_dir, "test.txt"));
 
             var options = new Parameters { ContinueIfExists = true, FilePath = _dir, FileMask = "test.*", TimeoutMS = 2000 };
-    
+
             var watchTask1 = Task.Run(() => WaitFile.WaitForFileToAppear(options));
             Task.Delay(3000).Wait();
             File.WriteAllText(Path.Combine(_dir, "test.txt"), "test_line");
@@ -68,4 +69,5 @@ namespace Frends.Community.WaitForFile.Tests
             Assert.IsTrue(result.FileExists);
         }
     }
+
 }
