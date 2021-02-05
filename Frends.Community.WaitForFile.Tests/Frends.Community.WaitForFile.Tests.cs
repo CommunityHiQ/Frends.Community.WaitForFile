@@ -9,7 +9,7 @@ namespace Frends.Community.WaitForFile.Tests
     [TestFixture]
     public class WaitForFileToAppearTests
     {
-        private readonly string _dir = Path.Combine(TestContext.CurrentContext.TestDirectory, @"..\..\..\TestData");
+        private readonly string _dir = Path.Combine(TestContext.CurrentContext.TestDirectory, @"../../../TestData");
 
         [SetUp]
         public void Setup()

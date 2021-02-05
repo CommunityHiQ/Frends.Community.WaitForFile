@@ -79,4 +79,4 @@ NOTE: Be sure to merge the latest from "upstream" before making a pull request!
 | ------- | ------- |
 | 1.0.0   | First version. |
 | 1.1.0   | TimeoutMS will be now showed as int in FRENDS UI. |
-| 1.1.1   | Converted to support .Net Framework 4.7.1 and .Net Standard 2.0
+| 1.2.1   | Converted to support .Net Framework 4.7.1 and .Net Standard 2.0
